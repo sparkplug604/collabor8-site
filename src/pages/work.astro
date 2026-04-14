@@ -1,0 +1,122 @@
+---
+import ContactSplitSection from '../components/ContactSplitSection.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { workProjects } from '../data/projects';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Recent Projects | collabor8 Architecture + Design (BC) Ltd."
+  description="Recent collabor8 Architecture + Design (BC) Ltd. projects across mixed-use, retail, and industrial work."
+>
+  <Header page="work" />
+
+  <main class="work-page">
+    <section class="section work-landing">
+      <div class="container">
+        <div class="work-landing__grid">
+          <div class="section-copy">
+            <h1>Recent Projects</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="work-page__full-bar" aria-hidden="true"></div>
+
+    <section class="section work-category">
+      <div class="container">
+        <div class="work-list">
+          {workProjects.map((project) => (
+            <article class="work-project" id={project.slug}>
+              <div class="work-project__copy">
+                <p class="card-label">{project.category}</p>
+                <h2>{project.name}</h2>
+                <p class="work-project__address">{project.subtitle}</p>
+                <p>{project.description}</p>
+                <p class="work-project__meta">
+                  <span><strong>Client</strong> {project.client}</span>
+                  <span><strong>Location</strong> {project.subtitle}</span>
+                </p>
+              </div>
+
+              <button
+                class="work-project__media-button"
+                type="button"
+                onclick="return window.openProjectModalFromButton ? window.openProjectModalFromButton(this) : false;"
+                aria-label={`Open gallery for ${project.name}`}
+              >
+                <div class="work-project__media">
+                  <img
+                    src={project.cover.src}
+                    alt={project.cover.alt}
+                    width="1400"
+                    height="1400"
+                    loading="lazy"
+                    decoding="async"
+                    referrerpolicy="no-referrer"
+                    sizes="(max-width: 1080px) 100vw, 42vw"
+                  />
+                </div>
+              </button>
+
+              <div class="work-project__gallery-data" hidden>
+                <span data-project-name={project.name}></span>
+                <span data-project-category={project.category}></span>
+                <span data-project-location={project.location}></span>
+                {project.gallery.map((image) => (
+                  <span
+                    data-gallery-src={image.src}
+                    data-gallery-alt={image.alt}
+                    data-gallery-position={image.position}
+                    data-gallery-fit={image.fit}
+                    data-gallery-caption-opacity={image.captionOpacity}
+                  ></span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ContactSplitSection />
+  </main>
+
+  <Footer page="work" />
+
+  <div class="project-modal" id="project-modal" aria-labelledby="project-modal-title" role="dialog" aria-modal="true" hidden>
+    <div class="project-modal__panel">
+      <div class="project-modal__media-shell">
+        <figure class="project-modal__figure">
+          <div class="project-modal__image-frame">
+            <img class="project-modal__image" src="" alt="" />
+            <button class="project-modal__close" type="button" aria-label="Close gallery" onclick="return window.closeProjectModal ? window.closeProjectModal() : false;">
+              X
+            </button>
+
+            <button class="project-modal__arrow project-modal__arrow--prev" type="button" aria-label="Previous image" onclick="return window.prevProjectModalImage ? window.prevProjectModalImage() : false;">
+              <span class="project-modal__arrow-icon" aria-hidden="true">&lt;</span>
+            </button>
+
+            <button class="project-modal__arrow project-modal__arrow--next" type="button" aria-label="Next image" onclick="return window.nextProjectModalImage ? window.nextProjectModalImage() : false;">
+              <span class="project-modal__arrow-icon" aria-hidden="true">&gt;</span>
+            </button>
+
+            <figcaption class="project-modal__caption">
+              <div class="project-modal__caption-top">
+                <p class="card-label" id="project-modal-category"></p>
+                <p class="project-modal__counter" id="project-modal-counter"></p>
+              </div>
+              <h2 id="project-modal-title"></h2>
+              <p class="project-modal__meta" id="project-modal-meta"></p>
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts/work-page.js" defer></script>
+</Layout>

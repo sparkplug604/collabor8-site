@@ -1,11 +1,285 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const heroImage = {
+  src: '/client-images/district-block-b/featured.jpg',
+  alt: 'Featured exterior view of District (Block B) mixed-use development',
+};
+
+const gastownImage = {
+  src: '/client-home/coldwell-building.jpeg',
+  alt: 'Coldwell Building streetscape in Gastown, Vancouver',
+};
+
+const heroWords = ['Imagine', 'Create', 'Deliver'];
+
+const moveNotice = {
+  title: 'We Are Moving!',
+  intro:
+    'collabor8 Architecture + Design (BC) Ltd. is moving locations. We are saying goodbye to the Marine Building and are very excited for our new space in the Coldwell Building in the heart of historic Gastown in downtown Vancouver.',
+  date: 'Anticipated opening is May 15th, 2026',
+  detail:
+    'Until we see you at our new premises, we continue working remotely and can be reached via our regular coordinates by phone, email, or Zoom.',
+};
+
+const pillars = [
+  {
+    title: 'Imagine',
+    lead: 'Inspiration is everywhere.',
+    copy: 'In our environment, our imagination, our team, and our clients.',
+  },
+  {
+    title: 'Create',
+    lead: 'Creativity dwells in necessity.',
+    copy: 'It springs from the nuances between function and design.',
+  },
+  {
+    title: 'Deliver',
+    lead: 'From sketch to realized building.',
+    copy: 'Beautifully designed, exceptionally functional, and financially viable.',
+  },
+];
+
+const leadership = [
+  {
+    name: 'Chris Block',
+    role: 'Principal',
+    copy:
+      'Chris Block brings 30 years’ experience in residential, retail, and mixed-use projects, earning 15 Silver Georgies and leading extended care portfolios, with proven success securing approvals across BC and Alberta.',
+  },
+  {
+    name: 'Andre Belliveau',
+    role: 'Associate',
+    copy:
+      'Andre Belliveau, promoted to Associate early in his career, is a senior project manager recognized for detail-oriented, collaborative leadership on residential, mixed-use, commercial projects, and tenant improvements across Western Canada.',
+  },
+  {
+    name: 'Jordan Levine',
+    role: 'Associate',
+    copy:
+      'Jordan Levine balances design, budget, and schedule through collaborative leadership, delivering brand-driven projects for Kal Tire, BCAA, and Stong’s while managing key accounts, development, operations, and design quality across Western Canada.',
+  },
+];
+
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="collabor8 Architecture + Design (BC) Ltd."
+  description="Temporary collabor8 Architecture + Design (BC) Ltd. homepage with move announcement, studio story, leadership, and recent projects."
+>
+  <Header page="home" />
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero__media">
+        <img
+          class="hero__image"
+          src={heroImage.src}
+          alt={heroImage.alt}
+          width="1600"
+          height="1200"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          referrerpolicy="no-referrer"
+          sizes="100vw"
+        />
+      </div>
+      <div class="hero__brand-bar">
+        <div class="hero__brand-lockup">
+          <span class="hero__brand-name">collabor8</span>
+          <span class="hero__brand-subtitle">Architecture + Design (BC) Ltd.</span>
+        </div>
+      </div>
+      <div class="hero__overlay">
+        <div class="hero__panel">
+          <h1 class="hero__title">
+            {heroWords.map((word) => (
+              <span class="hero__word" aria-label={word}>
+                <span class="sr-only">{word}</span>
+                {word.split('').map((letter) => (
+                  <span class="hero__word-letter" aria-hidden="true">{letter}</span>
+                ))}
+              </span>
+            ))}
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="move-notice" aria-label="Studio move update">
+      <div class="container">
+        <article class="homepage-split move-notice__layout">
+          <div class="move-notice__panel">
+            <div class="move-notice__header">
+              <h2>{moveNotice.title}</h2>
+            </div>
+
+            <div class="move-notice__copy">
+              <p><span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Ltd.</span> is moving locations. We are saying goodbye to the Marine Building and are very excited for our new space in the Coldwell Building in the heart of historic Gastown in downtown Vancouver.</p>
+              <p>{moveNotice.detail}</p>
+            </div>
+
+            <p class="move-notice__date">{moveNotice.date}</p>
+          </div>
+
+          <figure class="move-notice__image">
+            <img
+              src={gastownImage.src}
+              alt={gastownImage.alt}
+              width="1400"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              referrerpolicy="no-referrer"
+            />
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="section brand-pillars">
+      <div class="container">
+        <div class="homepage-split brand-pillars__grid">
+          <figure class="brand-pillars__image">
+            <img
+              src="/client-home/imagine-create-deliver.png"
+              alt="Sketch imagery representing the imagine create deliver process"
+              width="2048"
+              height="1536"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
+          <div class="brand-pillars__copy">
+            {pillars.map((pillar) => (
+              <article class="brand-pillars__item">
+                <h2>{pillar.title}</h2>
+                <p class="brand-pillars__lead">{pillar.lead}</p>
+                <p>{pillar.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section" id="our-story">
+      <div class="container">
+        <div class="homepage-split story-section__grid">
+          <figure class="story-section__media">
+            <img
+              src="/client-home/our-story.jpg"
+              alt="People gathered near a fountain in a public urban setting"
+              width="1600"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
+          <div class="section-copy story-section__copy">
+            <h2>Our Story</h2>
+            <div class="story-section__body">
+              <p class="lead">
+                <span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Ltd.</span> provides the collective value and strength of design and architecture under a single umbrella to see client projects through from inception to completion.
+              </p>
+              <p>
+                We are architects and designers focused on delivering thoughtful and effective solutions. We build strong working relationships with our clients and bring leadership and clarity to each project.
+              </p>
+              <p>
+                Our work is grounded in improving community outcomes and creating lasting value through design.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section people-section" id="our-people">
+      <div class="container">
+        <div class="homepage-split people-section__grid">
+          <div class="section-copy people-section__copy">
+            <h2>Our People</h2>
+            <p class="lead">
+              <span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Ltd.</span> is an accomplished, award-winning team of architects, designers, technologists, and planners.
+            </p>
+            <p>
+              We are curious, creative, and believe in investing in a supportive work environment. Our people enable us to imagine and realize our best work.
+            </p>
+          </div>
+
+          <figure class="people-section__media">
+            <img
+              src="/client-home/img-6226.jpg"
+              alt="Team members gathered in the collabor8 studio"
+              width="3024"
+              height="4032"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section leadership-section" id="leadership">
+      <div class="container">
+        <div class="homepage-split leadership-section__layout">
+          <div class="leadership-section__column leadership-section__column--left">
+            <div class="section-copy leadership-section__heading">
+              <h2>Our Leadership</h2>
+            </div>
+          </div>
+
+          <div class="leadership-section__column leadership-section__column--right">
+            {leadership.map((leader, index) => (
+              <article class="leadership-card">
+                <h3>{leader.name}</h3>
+                <p class="leadership-card__role">{leader.role}</p>
+                <p>{leader.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--connect" id="how-to-connect">
+      <div class="container">
+        <div class="connect-block">
+          <div class="connect-copy">
+            <h2 class="connect-title">
+              Let&apos;s <span class="wordmark-inline">collabor8</span> Together
+            </h2>
+          </div>
+
+          <form class="contact-form">
+            <label>
+              <span>First Name*</span>
+              <input type="text" name="first-name" placeholder="First Name*" />
+            </label>
+            <label>
+              <span>Last Name</span>
+              <input type="text" name="last-name" placeholder="Last Name" />
+            </label>
+            <label class="contact-form__full">
+              <span>Email*</span>
+              <input type="email" name="email" placeholder="Email*" />
+            </label>
+            <label class="contact-form__full contact-form__message">
+              <span>Message*</span>
+              <textarea name="message" placeholder="Message*"></textarea>
+            </label>
+            <button type="button">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer page="home" />
 </Layout>

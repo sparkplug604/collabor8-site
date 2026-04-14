@@ -1,0 +1,42 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'how-to-connect' } = Astro.props;
+---
+
+<section class="section section--connect" id={id}>
+  <div class="container">
+    <div class="connect-block">
+      <div class="connect-copy">
+        <h2 class="connect-title">
+          Let&apos;s <span class="wordmark-inline">collabor8</span> Together
+        </h2>
+        <p class="lead">
+          Ready to bring your vision to life? Whether you&apos;re planning your next office, facility, housing development, or civic space, we&apos;re here to guide the work with clarity, precision, and practical momentum.
+        </p>
+      </div>
+
+      <form class="contact-form">
+        <label>
+          <span>First Name*</span>
+          <input type="text" name="first-name" placeholder="First Name*" />
+        </label>
+        <label>
+          <span>Last Name</span>
+          <input type="text" name="last-name" placeholder="Last Name" />
+        </label>
+        <label class="contact-form__full">
+          <span>Email*</span>
+          <input type="email" name="email" placeholder="Email*" />
+        </label>
+        <label class="contact-form__full contact-form__message">
+          <span>Message*</span>
+          <textarea name="message" placeholder="Message*"></textarea>
+        </label>
+        <button type="button">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

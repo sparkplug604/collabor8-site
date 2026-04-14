@@ -1,0 +1,54 @@
+---
+interface Props {
+  page?: 'home' | 'work';
+}
+
+const { page = 'home' } = Astro.props;
+
+const links = [
+  { href: page === 'home' ? '#home' : '/', label: 'Home' },
+  { href: page === 'home' ? '#our-story' : '/#our-story', label: 'Who We Are' },
+  { href: '/work', label: 'Our Work', current: page === 'work' },
+  { href: page === 'home' ? '#how-to-connect' : '#how-to-connect', label: 'Connect', boxed: true },
+];
+---
+
+<header class="site-header" id="top">
+  <div class="container site-header__inner">
+    <a class="brand" href={page === 'home' ? '#home' : '/'} aria-label="collabor8 home">
+      <span class="brand__text">
+        <span class="brand__name">collabor8</span>
+        <span class="brand__subtitle">Architecture + Design (BC) Ltd.</span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <ul class="nav-list">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={link.current ? 'page' : undefined}
+              class={link.boxed ? 'nav-link--boxed' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('.site-header');
+
+  if (header) {
+    const updateHeaderState = () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    };
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+  }
+</script>
