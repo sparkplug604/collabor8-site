@@ -3,13 +3,18 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
 
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
 const heroImage = {
-  src: '/client-images/district-block-b/featured.jpg',
+  src: withBase('/client-images/district-block-b/featured.jpg'),
   alt: 'Featured exterior view of District (Block B) mixed-use development',
 };
 
 const gastownImage = {
-  src: '/client-home/coldwell-building.jpeg',
+  src: withBase('/client-home/coldwell-building.jpeg'),
   alt: 'Coldwell Building streetscape in Gastown, Vancouver',
 };
 
@@ -145,7 +150,7 @@ const leadership = [
         <div class="homepage-split brand-pillars__grid">
           <figure class="brand-pillars__image">
             <img
-              src="/client-home/imagine-create-deliver.png"
+              src={withBase('/client-home/imagine-create-deliver.png')}
               alt="Sketch imagery representing the imagine create deliver process"
               width="2048"
               height="1536"
@@ -172,7 +177,7 @@ const leadership = [
         <div class="homepage-split story-section__grid">
           <figure class="story-section__media">
             <img
-              src="/client-home/our-story.jpg"
+              src={withBase('/client-home/our-story.jpg')}
               alt="People gathered near a fountain in a public urban setting"
               width="1600"
               height="1200"
@@ -214,7 +219,7 @@ const leadership = [
 
           <figure class="people-section__media">
             <img
-              src="/client-home/img-6226.jpg"
+              src={withBase('/client-home/img-6226.jpg')}
               alt="Team members gathered in the collabor8 studio"
               width="3024"
               height="4032"

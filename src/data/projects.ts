@@ -6,6 +6,11 @@ type GalleryImage = {
   captionOpacity?: string;
 };
 
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
 export type WorkProject = {
   slug: string;
   category: string;
@@ -26,7 +31,7 @@ const image = (
   fit = 'cover',
   captionOpacity = '0.5'
 ): GalleryImage => ({
-  src,
+  src: withBase(src),
   alt,
   position,
   fit,

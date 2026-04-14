@@ -4,11 +4,14 @@ interface Props {
 }
 
 const { page = 'home' } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 
 const footerLinks = [
-  { href: page === 'home' ? '#home' : '/', label: 'Home' },
-  { href: page === 'home' ? '#our-story' : '/#our-story', label: 'Who We Are' },
-  { href: '/work', label: 'Our Work' },
+  { href: page === 'home' ? '#home' : base, label: 'Home' },
+  { href: page === 'home' ? '#our-story' : `${base}#our-story`, label: 'Who We Are' },
+  { href: `${base}work`, label: 'Our Work' },
   { href: page === 'home' ? '#how-to-connect' : '#how-to-connect', label: 'Connect' },
 ];
 
@@ -85,7 +88,7 @@ const socialLinks = [
 
   <div class="container site-footer__bottom">
     <div class="site-footer__signature">
-      <a class="footer-brand" href={page === 'home' ? '#home' : '/'} aria-label="collabor8 home">
+      <a class="footer-brand" href={page === 'home' ? '#home' : base} aria-label="collabor8 home">
         <span class="footer-brand__name">collabor8</span>
         <span class="footer-brand__subtitle">Architecture + Design (BC) Ltd.</span>
       </a>
