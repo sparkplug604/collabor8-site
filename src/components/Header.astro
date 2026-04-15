@@ -25,7 +25,19 @@ const links = [
       </span>
     </a>
 
-    <nav aria-label="Primary navigation">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav aria-label="Primary navigation" id="primary-navigation">
       <ul class="nav-list">
         {links.map((link) => (
           <li>
@@ -45,6 +57,8 @@ const links = [
 
 <script>
   const header = document.querySelector('.site-header');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelectorAll('.nav-list a');
 
   if (header) {
     const updateHeaderState = () => {
@@ -53,5 +67,31 @@ const links = [
 
     updateHeaderState();
     window.addEventListener('scroll', updateHeaderState, { passive: true });
+  }
+
+  if (header && navToggle) {
+    const setMenuState = (isOpen) => {
+      header.classList.toggle('menu-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    navToggle.addEventListener('click', () => {
+      setMenuState(!header.classList.contains('menu-open'));
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 720) {
+          setMenuState(false);
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 720) {
+        setMenuState(false);
+      }
+    });
   }
 </script>
