@@ -1960,6 +1960,34 @@ body.project-modal-open {
     width: 42px;
     height: 42px;
   }
+
+  .hero__brand-bar {
+    height: 148px;
+    padding: 20px 32px 0;
+  }
+
+  .hero__brand-lockup {
+    transform: translateY(12px);
+  }
+
+  .hero__brand-name {
+    font-size: clamp(3.35rem, 8vw, 5.6rem);
+    margin-left: -10px;
+  }
+
+  .hero__brand-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.28em;
+    transform: translate(-10px, 8px);
+  }
+
+  .hero__panel {
+    width: clamp(220px, 24vw, 280px);
+  }
+
+  .hero__title {
+    font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+  }
 }
 
 @media (max-width: 720px) {
@@ -2053,15 +2081,24 @@ body.project-modal-open {
     inset: 0 0 auto;
     height: 112px;
     padding: var(--space-16) var(--space-24) 0;
+    justify-content: flex-start;
   }
 
   .hero__brand-lockup {
-    transform: translateY(19px);
+    width: 100%;
+    max-width: 100%;
+    transform: translateY(11px);
+  }
+
+  .hero__brand-name {
+    margin-left: 0;
+    font-size: clamp(2.5rem, 10.4vw, 3.35rem);
   }
 
   .hero__brand-subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 0.22em;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    transform: translate(0, 8px);
   }
 
   .hero__overlay {
