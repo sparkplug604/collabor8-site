@@ -9,8 +9,8 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 
 const heroImage = {
-  src: withBase('/client-images/district-block-b/featured.jpg'),
-  alt: 'Featured exterior view of District (Block B) mixed-use development',
+  src: withBase('/client-home/homepage-hero-image.jpg'),
+  alt: 'Evening view of a mixed-use retail village with illuminated architecture',
 };
 
 const gastownImage = {
@@ -18,12 +18,17 @@ const gastownImage = {
   alt: 'Coldwell Building streetscape in Gastown, Vancouver',
 };
 
+const leadershipImage = {
+  src: withBase('/client-home/leadership-group.jpeg'),
+  alt: 'collabor8 leadership group portrait against a brick wall',
+};
+
 const heroWords = ['Imagine', 'Create', 'Deliver'];
 
 const moveNotice = {
   title: 'We Are Moving!',
   intro:
-    'collabor8 Architecture + Design (BC) Ltd. is moving locations. We are saying goodbye to the Marine Building and are very excited for our new space in the Coldwell Building in the heart of historic Gastown in downtown Vancouver.',
+    'collabor8 Architecture + Design (BC) Inc. is moving locations. We are saying goodbye to the Marine Building and are very excited for our new space in the Coldwell Building in the heart of historic Gastown in downtown Vancouver.',
   date: 'Anticipated opening is May 15th, 2026',
   detail:
     'Until we see you at our new premises, we continue working remotely and can be reached via our regular coordinates by phone, email, or Zoom.',
@@ -71,8 +76,8 @@ const leadership = [
 ---
 
 <Layout
-  title="collabor8 Architecture + Design (BC) Ltd."
-  description="Temporary collabor8 Architecture + Design (BC) Ltd. homepage with move announcement, studio story, leadership, and recent projects."
+  title="collabor8 Architecture + Design (BC) Inc."
+  description="Temporary collabor8 Architecture + Design (BC) Inc. homepage with move announcement, studio story, leadership, and recent projects."
 >
   <Header page="home" />
 
@@ -83,8 +88,8 @@ const leadership = [
           class="hero__image"
           src={heroImage.src}
           alt={heroImage.alt}
-          width="1600"
-          height="1200"
+          width="3000"
+          height="2045"
           loading="eager"
           decoding="async"
           fetchpriority="high"
@@ -95,7 +100,7 @@ const leadership = [
       <div class="hero__brand-bar">
         <div class="hero__brand-lockup">
           <span class="hero__brand-name">collabor8</span>
-          <span class="hero__brand-subtitle">Architecture + Design (BC) Ltd.</span>
+          <span class="hero__brand-subtitle">Architecture + Design (BC) Inc.</span>
         </div>
       </div>
       <div class="hero__overlay">
@@ -123,7 +128,7 @@ const leadership = [
             </div>
 
             <div class="move-notice__copy">
-              <p><span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Ltd.</span> is moving locations. We are saying goodbye to the Marine Building and are very excited for our new space in the Coldwell Building in the heart of historic Gastown in downtown Vancouver.</p>
+              <p><span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Inc.</span> is moving locations. We are saying goodbye to the Marine Building and are very excited for our new space in the Coldwell Building in the heart of historic Gastown in downtown Vancouver.</p>
               <p>{moveNotice.detail}</p>
             </div>
 
@@ -190,7 +195,7 @@ const leadership = [
             <h2>Our Story</h2>
             <div class="story-section__body">
               <p class="lead">
-                <span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Ltd.</span> provides the collective value and strength of design and architecture under a single umbrella to see client projects through from inception to completion.
+                <span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Inc.</span> provides the collective value and strength of design and architecture under a single umbrella to see client projects through from inception to completion.
               </p>
               <p>
                 We are architects and designers focused on delivering thoughtful and effective solutions. We build strong working relationships with our clients and bring leadership and clarity to each project.
@@ -210,7 +215,7 @@ const leadership = [
           <div class="section-copy people-section__copy">
             <h2>Our People</h2>
             <p class="lead">
-              <span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Ltd.</span> is an accomplished, award-winning team of architects, designers, technologists, and planners.
+              <span class="brand-inline-full"><span class="wordmark-inline">collabor8</span> Architecture + Design (BC) Inc.</span> is an accomplished, award-winning team of architects, designers, technologists, and planners.
             </p>
             <p>
               We are curious, creative, and believe in investing in a supportive work environment. Our people enable us to imagine and realize our best work.
@@ -238,6 +243,22 @@ const leadership = [
             <div class="section-copy leadership-section__heading">
               <h2>Our Leadership</h2>
             </div>
+
+            <figure class="leadership-section__media">
+              <div class="leadership-section__image-frame">
+                <img
+                  src={leadershipImage.src}
+                  alt={leadershipImage.alt}
+                  width="3744"
+                  height="2106"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>
+                Our Leadership Team pictured from left to right: Jordan Levine, Chris Block, and Andre Belliveau.
+              </figcaption>
+            </figure>
           </div>
 
           <div class="leadership-section__column leadership-section__column--right">
