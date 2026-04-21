@@ -11,8 +11,8 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 ---
 
 <Layout
-  title="Recent Projects | collabor8 Architecture + Design (BC) Inc."
-  description="Recent collabor8 Architecture + Design (BC) Inc. projects across mixed-use, retail, and industrial work."
+  title="Our Recent Projects | collabor8 Architecture + Design (BC)"
+  description="Recent collabor8 Architecture + Design (BC) projects across mixed-use, retail, and industrial work."
 >
   <Header page="work" />
 
@@ -21,7 +21,10 @@ const base = import.meta.env.BASE_URL.endsWith('/')
       <div class="container">
         <div class="work-landing__grid">
           <div class="section-copy">
-            <h1>Recent Projects</h1>
+            <h1>Our Recent Projects</h1>
+            <p class="lead work-landing__intro">
+              Our portfolio spans new construction, renovations, and tenant improvements across a range of sectors. Our work includes residential, mixed-use developments, as well as office, commercial and industrial projects that reflect a practical and thoughtful approach to design. Below are some of our more recent projects.
+            </p>
           </div>
         </div>
       </div>
@@ -41,7 +44,6 @@ const base = import.meta.env.BASE_URL.endsWith('/')
                 <p>{project.description}</p>
                 <p class="work-project__meta">
                   <span><strong>Client</strong> {project.client}</span>
-                  <span><strong>Location</strong> {project.subtitle}</span>
                 </p>
               </div>
 
@@ -108,15 +110,15 @@ const base = import.meta.env.BASE_URL.endsWith('/')
               <span class="project-modal__arrow-icon" aria-hidden="true">&gt;</span>
             </button>
 
-            <figcaption class="project-modal__caption">
-              <div class="project-modal__caption-top">
-                <p class="card-label" id="project-modal-category"></p>
-                <p class="project-modal__counter" id="project-modal-counter"></p>
-              </div>
-              <h2 id="project-modal-title"></h2>
-              <p class="project-modal__meta" id="project-modal-meta"></p>
-            </figcaption>
           </div>
+          <figcaption class="project-modal__caption">
+            <div class="project-modal__caption-top">
+              <p class="card-label" id="project-modal-category"></p>
+              <p class="project-modal__counter" id="project-modal-counter"></p>
+            </div>
+            <h2 id="project-modal-title"></h2>
+            <p class="project-modal__meta" id="project-modal-meta"></p>
+          </figcaption>
         </figure>
       </div>
     </div>

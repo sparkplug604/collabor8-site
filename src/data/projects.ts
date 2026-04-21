@@ -163,9 +163,9 @@ export const workProjects: WorkProject[] = [
     client: 'Starbucks',
     services: 'Retail',
     location: 'Various',
-    cover: image('/client-images/starbucks/featured.jpg', 'Featured view of Starbucks project'),
+    cover: image('/client-images/starbucks/new-featured.jpg', 'Featured view of Starbucks project', '50% 24%'),
     gallery: [
-      image('/client-images/starbucks/featured.jpg', 'Featured view of Starbucks project'),
+      image('/client-images/starbucks/new-featured.jpg', 'Featured view of Starbucks project', '50% 24%'),
       image('/client-images/starbucks/01.jpg', 'Additional project image for Starbucks'),
       image('/client-images/starbucks/02.jpg', 'Additional project image for Starbucks'),
       image('/client-images/starbucks/03.jpg', 'Additional project image for Starbucks'),

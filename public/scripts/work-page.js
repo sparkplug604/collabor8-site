@@ -6,8 +6,8 @@
     title: '',
     category: '',
     location: '',
-    position: '50% 62%',
-    fit: 'cover',
+    position: 'center',
+    fit: 'contain',
     captionOpacity: '0.5',
     activeImageIndex: 0
   };
@@ -33,8 +33,8 @@
     image = state.gallery[state.activeImageIndex];
     modalImage.src = image.src;
     modalImage.alt = image.alt;
-    modalImage.style.objectPosition = image.position || '50% 62%';
-    modalImage.style.objectFit = image.fit || 'cover';
+    modalImage.style.objectPosition = 'center';
+    modalImage.style.objectFit = 'contain';
     modalCaption.style.setProperty('--project-modal-caption-opacity', image.captionOpacity || '0.5');
     modalTitle.textContent = state.title;
     modalCategory.textContent = state.category;
@@ -69,8 +69,8 @@
     state.title = '';
     state.category = '';
     state.location = '';
-    state.position = '50% 62%';
-    state.fit = 'cover';
+    state.position = 'center';
+    state.fit = 'contain';
     state.captionOpacity = '0.5';
     state.gallery = [];
     state.activeImageIndex = 0;
