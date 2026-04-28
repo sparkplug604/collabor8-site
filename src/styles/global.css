@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Collabor8 Arial Black";
+  src:
+    local("Arial Black"),
+    url("../assets/fonts/arial-black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --brand-orange: #f47b20;
   --color-white: #ffffff;
@@ -16,6 +26,7 @@
   --space-80: 80px;
   --grid-gap-two: 40px;
   --grid-gap-three: 32px;
+  --brand-wordmark-family: "Collabor8 Arial Black", "Arial Black", Arial, Helvetica, sans-serif;
   --brand-wordmark-weight: 950;
   --brand-wordmark-tracking: -0.022em;
   --brand-wordmark-stretch: 1.085;
@@ -275,7 +286,7 @@ ul {
 .hero__brand-name,
 .footer-brand__name {
   display: inline-block;
-  font-family: "Arial Black", Arial, Helvetica, sans-serif;
+  font-family: var(--brand-wordmark-family);
   font-weight: var(--brand-wordmark-weight);
   line-height: 0.9;
   letter-spacing: var(--brand-wordmark-tracking);
@@ -286,7 +297,7 @@ ul {
 .wordmark-inline {
   display: inline-block;
   margin-right: 0.14em;
-  font-family: "Arial Black", Arial, Helvetica, sans-serif;
+  font-family: var(--brand-wordmark-family);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.02em;
