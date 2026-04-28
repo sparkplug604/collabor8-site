@@ -17,12 +17,13 @@
     var modalTitle = document.getElementById('project-modal-title');
     var modalCategory = document.getElementById('project-modal-category');
     var modalMeta = document.getElementById('project-modal-meta');
+    var modalCredit = document.getElementById('project-modal-credit');
     var modalCounter = document.getElementById('project-modal-counter');
     var modalCaption = document.querySelector('.project-modal__caption');
     var state = window.workProjectModalState;
     var image;
 
-    if (!modalImage || !modalTitle || !modalCategory || !modalMeta || !modalCounter || !modalCaption) {
+    if (!modalImage || !modalTitle || !modalCategory || !modalMeta || !modalCredit || !modalCounter || !modalCaption) {
       return false;
     }
 
@@ -33,12 +34,20 @@
     image = state.gallery[state.activeImageIndex];
     modalImage.src = image.src;
     modalImage.alt = image.alt;
-    modalImage.style.objectPosition = 'center';
-    modalImage.style.objectFit = 'contain';
+    var isMobileModal = window.matchMedia && window.matchMedia('(max-width: 720px)').matches;
+    var modalPosition = isMobileModal && image.mobileModalPosition ? image.mobileModalPosition : image.modalPosition;
+    var modalFit = isMobileModal && image.mobileModalFit ? image.mobileModalFit : image.modalFit;
+    var modalScale = isMobileModal && image.mobileModalScale ? image.mobileModalScale : image.modalScale;
+
+    modalImage.style.objectPosition = modalPosition || 'center';
+    modalImage.style.objectFit = modalFit || 'contain';
+    modalImage.style.transform = modalScale && modalScale !== '1' ? 'scale(' + modalScale + ')' : '';
+    modalImage.style.transformOrigin = modalPosition || 'center';
     modalCaption.style.setProperty('--project-modal-caption-opacity', image.captionOpacity || '0.5');
     modalTitle.textContent = state.title;
     modalCategory.textContent = state.category;
     modalMeta.textContent = 'Location ' + state.location;
+    modalCredit.textContent = image.credit || '';
     modalCounter.textContent = state.activeImageIndex + 1 + ' / ' + state.gallery.length;
 
     return true;
@@ -94,6 +103,13 @@
         alt: galleryNodes[i].getAttribute('data-gallery-alt') || '',
         position: galleryNodes[i].getAttribute('data-gallery-position') || '50% 62%',
         fit: galleryNodes[i].getAttribute('data-gallery-fit') || 'cover',
+        modalPosition: galleryNodes[i].getAttribute('data-gallery-modal-position') || '',
+        modalFit: galleryNodes[i].getAttribute('data-gallery-modal-fit') || '',
+        modalScale: galleryNodes[i].getAttribute('data-gallery-modal-scale') || '',
+        mobileModalPosition: galleryNodes[i].getAttribute('data-gallery-mobile-modal-position') || '',
+        mobileModalFit: galleryNodes[i].getAttribute('data-gallery-mobile-modal-fit') || '',
+        mobileModalScale: galleryNodes[i].getAttribute('data-gallery-mobile-modal-scale') || '',
+        credit: galleryNodes[i].getAttribute('data-gallery-credit') || '',
         captionOpacity: galleryNodes[i].getAttribute('data-gallery-caption-opacity') || '0.5'
       });
     }

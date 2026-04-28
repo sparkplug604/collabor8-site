@@ -21,7 +21,7 @@
   --brand-wordmark-stretch: 1.085;
   --brand-subtitle-weight: 500;
   --brand-subtitle-tracking: 0.46em;
-  --homepage-block-gap: 175px;
+  --homepage-block-gap: 100px;
 }
 
 *,
@@ -545,7 +545,7 @@ nav {
 
 .hero__title {
   margin: 0 auto;
-  width: calc(100% - 28px);
+  width: min(100%, 15.5em);
   color: var(--color-white);
   font-size: clamp(1.25rem, 1.85vw, 1.75rem);
   line-height: 1.1;
@@ -558,8 +558,8 @@ nav {
   display: block;
   width: 100%;
   font-weight: 900;
-  letter-spacing: 0.42em;
-  text-indent: 0.42em;
+  letter-spacing: 0.36em;
+  padding-left: 0.36em;
   text-transform: uppercase;
 }
 
@@ -1140,7 +1140,7 @@ nav {
 }
 
 .story-section__media {
-  height: calc(100% - 20px);
+  height: 100%;
   width: calc(100% - 28px);
   justify-self: end;
 }
@@ -1153,7 +1153,11 @@ nav {
 
 .story-section__body {
   display: grid;
-  gap: 22px;
+  gap: 12px;
+}
+
+.story-section__body p {
+  margin: 0;
 }
 
 .story-section__copy .lead,
@@ -1165,7 +1169,7 @@ nav {
 
 .story-section__copy .lead {
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 .people-section__copy .lead,
@@ -1176,13 +1180,19 @@ nav {
 }
 
 .people-section__copy {
+  display: grid;
+  gap: 12px;
   width: calc(100% - 28px);
   justify-self: end;
   margin-top: 14px;
 }
 
+.people-section__copy p {
+  margin: 0;
+}
+
 .people-section__copy h2 {
-  margin: -20px 0 46px;
+  margin: -20px 0 var(--space-24);
 }
 
 .people-section {
@@ -1499,7 +1509,7 @@ nav {
 
 .work-project__media {
   position: relative;
-  aspect-ratio: 8 / 5;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: #f1ede8;
 }
@@ -1751,6 +1761,13 @@ nav {
   flex: 0 1 auto;
 }
 
+.project-modal__credit {
+  margin-left: auto;
+  font-size: 0.6rem;
+  line-height: 1.2;
+  color: #77736e;
+}
+
 .project-modal__arrow {
   position: absolute;
   top: 50%;
@@ -1816,7 +1833,7 @@ body.project-modal-open {
 }
 
 .site-footer {
-  margin-top: 175px;
+  margin-top: 88px;
   padding-top: var(--space-48);
   padding-bottom: var(--space-24);
   background: var(--color-white);
@@ -2111,10 +2128,15 @@ body.project-modal-open {
 
   .hero__title {
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    width: min(100%, 15.5em);
   }
 }
 
 @media (max-width: 720px) {
+  :root {
+    --container-padding: 20px;
+  }
+
   .site-header__inner {
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -2136,11 +2158,17 @@ body.project-modal-open {
     display: inline-block;
     margin-left: 0.16em;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.18rem;
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1;
-    transform: translateY(-0.02em);
+    transform: translateY(0.01em);
+  }
+
+  .brand__mobile-paren {
+    display: inline-block;
+    font-size: 0.76em;
+    transform: translateY(-0.12em);
   }
 
   .brand__subtitle {
@@ -2264,15 +2292,15 @@ body.project-modal-open {
   }
 
   .hero__title {
-    width: min(100%, 240px);
+    width: min(100%, 15.5em);
     margin: 0 auto;
     font-size: clamp(0.92rem, 4vw, 1.12rem);
     gap: 1.15em;
   }
 
   .hero__word {
-    letter-spacing: 0.44em;
-    text-indent: 0.44em;
+    letter-spacing: 0.34em;
+    padding-left: 0.34em;
   }
 
   .move-notice {
@@ -2361,6 +2389,18 @@ body.project-modal-open {
 
   .leadership-card {
     padding: 0;
+  }
+
+  .leadership-section__image-frame {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    background: var(--color-white);
+  }
+
+  .leadership-section__image-frame img {
+    object-fit: contain;
+    object-position: center;
   }
 
   .leadership-section__person-tag {
