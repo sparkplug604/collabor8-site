@@ -22,6 +22,10 @@
   --brand-subtitle-weight: 500;
   --brand-subtitle-tracking: 0.46em;
   --homepage-block-gap: 100px;
+  --homepage-footer-gap: var(--homepage-block-gap);
+  --homepage-heading-size: clamp(2.1rem, 4vw, 3.2rem);
+  --homepage-heading-tracking: -0.045em;
+  --homepage-heading-line-height: 0.98;
 }
 
 *,
@@ -180,8 +184,8 @@ h1 span {
 }
 
 h2 {
-  font-size: clamp(2.1rem, 4vw, 3.2rem);
-  letter-spacing: -0.045em;
+  font-size: var(--homepage-heading-size);
+  letter-spacing: var(--homepage-heading-tracking);
 }
 
 h3 {
@@ -838,8 +842,9 @@ nav {
   max-width: none;
   margin-bottom: 0;
   text-align: center;
-  font-size: clamp(2.25rem, 4.55vw, 3.75rem);
-  line-height: 0.98;
+  font-size: var(--homepage-heading-size);
+  line-height: var(--homepage-heading-line-height);
+  letter-spacing: var(--homepage-heading-tracking);
   white-space: nowrap;
 }
 
@@ -998,8 +1003,9 @@ nav {
 
 .move-notice__header h2 {
   margin: 0;
-  font-size: clamp(2.1rem, 4vw, 3.2rem);
-  letter-spacing: -0.045em;
+  font-size: var(--homepage-heading-size);
+  letter-spacing: var(--homepage-heading-tracking);
+  line-height: var(--homepage-heading-line-height);
   color: var(--color-ink);
 }
 
@@ -1039,7 +1045,8 @@ nav {
   align-items: stretch;
 }
 
-.move-notice + .brand-pillars,
+.move-notice + .whats-new,
+.whats-new + .brand-pillars,
 .brand-pillars + .story-section,
 .story-section + .people-section,
 .people-section + .leadership-section,
@@ -1052,12 +1059,68 @@ nav {
 }
 
 .brand-pillars,
+.whats-new,
 .story-section,
 .people-section,
 .leadership-section,
 #how-to-connect.section--connect {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.whats-new__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-24);
+  text-align: center;
+}
+
+.whats-new h2 {
+  margin: 0;
+  font-size: var(--homepage-heading-size);
+  letter-spacing: var(--homepage-heading-tracking);
+  line-height: var(--homepage-heading-line-height);
+}
+
+.whats-new__copy {
+  display: grid;
+  gap: 6px;
+  max-width: 720px;
+  color: var(--color-copy);
+  font-size: 0.95rem;
+  line-height: 1.52;
+}
+
+.whats-new__copy p {
+  margin: 0;
+  font-size: inherit;
+}
+
+.whats-new__logo-link {
+  display: inline-flex;
+  width: min(210px, 62vw);
+  margin-top: 8px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.whats-new__logo-link img {
+  width: 100%;
+  height: auto;
+}
+
+.whats-new__logo-link:hover,
+.whats-new__logo-link:focus-visible {
+  opacity: 0.82;
+  filter: drop-shadow(0 8px 18px rgba(244, 123, 32, 0.22));
+  transform: translateY(-2px);
+}
+
+.whats-new__logo-link:focus-visible {
+  outline: 1px solid var(--brand-orange);
+  outline-offset: 8px;
 }
 
 .brand-pillars__image,
@@ -1112,7 +1175,9 @@ nav {
 }
 
 .brand-pillars__item h2 {
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-size: var(--homepage-heading-size);
+  letter-spacing: var(--homepage-heading-tracking);
+  line-height: var(--homepage-heading-line-height);
 }
 
 .brand-pillars__lead {
@@ -1833,7 +1898,7 @@ body.project-modal-open {
 }
 
 .site-footer {
-  margin-top: 88px;
+  margin-top: var(--homepage-footer-gap);
   padding-top: var(--space-48);
   padding-bottom: var(--space-24);
   background: var(--color-white);
@@ -2135,6 +2200,8 @@ body.project-modal-open {
 @media (max-width: 720px) {
   :root {
     --container-padding: 20px;
+    --homepage-block-gap: 88px;
+    --homepage-footer-gap: var(--homepage-block-gap);
   }
 
   .site-header__inner {
@@ -2304,7 +2371,7 @@ body.project-modal-open {
   }
 
   .move-notice {
-    margin-top: 18px;
+    margin-top: var(--homepage-block-gap);
     padding-bottom: var(--space-24);
   }
 
@@ -2321,7 +2388,6 @@ body.project-modal-open {
   }
 
   .move-notice__header h2 {
-    font-size: clamp(2rem, 9vw, 3rem);
     text-align: left;
     margin-bottom: 0;
   }
@@ -2343,7 +2409,8 @@ body.project-modal-open {
     order: 1;
   }
 
-  .move-notice + .brand-pillars,
+  .move-notice + .whats-new,
+  .whats-new + .brand-pillars,
   .brand-pillars + .story-section,
   .story-section + .people-section,
   .people-section + .leadership-section,
@@ -2526,7 +2593,6 @@ body.project-modal-open {
 
   .connect-title {
     white-space: nowrap;
-    font-size: clamp(1.65rem, 7.2vw, 2.2rem);
     text-align: left;
   }
 
