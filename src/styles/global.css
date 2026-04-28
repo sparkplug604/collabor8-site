@@ -2588,9 +2588,11 @@ body.project-modal-open {
   }
 
   .contact-form {
-    width: 100%;
+    width: calc(100% - 24px);
     grid-template-columns: 1fr;
     justify-self: start;
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   .contact-form__full,
@@ -2599,11 +2601,14 @@ body.project-modal-open {
   }
 
   .connect-copy {
-    width: 100%;
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   .connect-title {
     white-space: nowrap;
+    font-size: clamp(1.5rem, 6.35vw, 2rem);
     text-align: left;
   }
 
