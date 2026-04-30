@@ -316,24 +316,29 @@ const leadership = [
             </h2>
           </div>
 
-          <form class="contact-form">
+          <form class="contact-form" data-contact-form data-form-source="Homepage">
             <label>
               <span>First Name*</span>
-              <input type="text" name="first-name" placeholder="First Name*" />
+              <input type="text" name="firstName" placeholder="First Name*" autocomplete="given-name" required />
             </label>
             <label>
               <span>Last Name</span>
-              <input type="text" name="last-name" placeholder="Last Name" />
+              <input type="text" name="lastName" placeholder="Last Name" autocomplete="family-name" />
             </label>
             <label class="contact-form__full">
               <span>Email*</span>
-              <input type="email" name="email" placeholder="Email*" />
+              <input type="email" name="email" placeholder="Email*" autocomplete="email" required />
             </label>
             <label class="contact-form__full contact-form__message">
               <span>Message*</span>
-              <textarea name="message" placeholder="Message*"></textarea>
+              <textarea name="message" placeholder="Message*" required></textarea>
             </label>
-            <button type="button">Submit</button>
+            <label class="contact-form__honeypot" aria-hidden="true" tabindex="-1">
+              <span>Company</span>
+              <input type="text" name="company" autocomplete="off" tabindex="-1" />
+            </label>
+            <button type="submit">Submit</button>
+            <p class="contact-form__status" data-contact-status aria-live="polite"></p>
           </form>
         </div>
       </div>
