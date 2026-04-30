@@ -913,6 +913,14 @@ nav {
   grid-column: 1 / -1;
 }
 
+.contact-form__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact-form button {
   grid-column: 1 / -1;
   justify-self: center;
@@ -927,8 +935,32 @@ nav {
   cursor: pointer;
 }
 
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .contact-form button:hover {
   background: var(--brand-orange);
+}
+
+.contact-form__status {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: 0;
+  min-height: 1.2em;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.contact-form__status[data-state="success"] {
+  color: var(--brand-orange);
+}
+
+.contact-form__status[data-state="error"] {
+  color: #9d2e1c;
 }
 
 .section-link {
