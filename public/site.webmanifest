@@ -1,0 +1,19 @@
+{
+  "name": "collabor8 Architecture + Design (BC)",
+  "short_name": "collabor8",
+  "icons": [
+    {
+      "src": "favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F47B20",
+  "background_color": "#F47B20",
+  "display": "standalone"
+}
