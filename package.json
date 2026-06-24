@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:github": "astro build",
+    "build:godaddy": "DEPLOY_TARGET=godaddy astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

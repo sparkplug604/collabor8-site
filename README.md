@@ -1,46 +1,46 @@
-# Astro Starter Kit: Basics
+# collabor8 Website
+
+Astro static site for collabor8 Architecture + Design (BC).
+
+## Local Development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The local development server usually opens at `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Builds
 
-Inside of your Astro project, you'll see the following folders and files:
+This site supports two production build targets:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+| Target | Command | Output |
+| --- | --- | --- |
+| GitHub Pages | `npm run build:github` | `dist/` with `/collabor8-site/` base paths |
+| GoDaddy / root domain | `npm run build:godaddy` | `dist/` with root `/` paths |
+
+## Deploy To GoDaddy
+
+1. Run:
+
+```sh
+npm run build:godaddy
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+2. Upload the contents of `dist/` to the GoDaddy hosting root, usually `public_html/`.
 
-## 🧞 Commands
+3. Confirm these pages load:
 
-All commands are run from the root of the project, from a terminal:
+- `/`
+- `/work`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Important: upload the contents inside `dist/`, not the `dist` folder itself.
 
-## 👀 Want to learn more?
+## Deploy To GitHub Pages
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```sh
+npm run build:github
+```
+
+GitHub Pages uses the repository subpath `/collabor8-site/`, so keep using `build:github` for that environment.
