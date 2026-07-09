@@ -928,8 +928,8 @@ nav {
   min-width: 296px;
   padding: 12px 32px;
   border: 0;
-  border-radius: 999px;
-  background: #e98533;
+  border-radius: 0;
+  background: var(--brand-orange);
   color: var(--color-white);
   font-weight: 700;
   cursor: pointer;
